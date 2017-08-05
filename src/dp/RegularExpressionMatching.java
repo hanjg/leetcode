@@ -74,9 +74,9 @@ public class RegularExpressionMatching {
 	    while(ip+1<p.length()&&p.charAt(ip+1)=='*') ip+=2;
 	    return ip==p.length();
 	}
-
 	public static void main(String[] args){
-		System.out.println(new RegularExpressionMatching().isMatch("aaa", "a*"));
+		System.out.println(new RegularExpressionMatching().isMatch("100-trade-done", "1*trade*done"));
 	}
 
 }
+

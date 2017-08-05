@@ -38,7 +38,7 @@ public class WordLadderII {
     	int curDistance=0;
     	while(!found&&!queue.isEmpty()){
     		int num=queue.size();
-    		curDistance++;//beginword到当前单词的距离
+    		curDistance++;//beginword到当前单词邻接单词的距离
     		for(int i=0;i<num;i++){
     			String cur=queue.poll();
     			List<String> curNeis=getNei(cur, endWord, wordList);

@@ -15,11 +15,20 @@ public class WildcardMatching {
 					dp[i][j]=dp[i-1][j-1]&&(p.charAt(j-1)=='?'||p.charAt(j-1)==s.charAt(i-1));
 				}
     			else {
-					dp[i][j]=dp[i][j-1]||dp[i-1][j];//p[j-1]是否代表空字符
+    				//p[j-1]是否代表空字符
+    				//空字符则看dp[i][j-1]
+    				//非空，则p[j-1]至少与s[i-1]匹配，看dp[i-1][j]
+					dp[i][j]=dp[i][j-1]||dp[i-1][j];
 					//dp[i][j]=dp[i][j-1]||dp[i-1][j-1]||...||dp[0][j-1]
 				}
     		}
     	}
+//    	for (int i = 0; i <= m; i++) {
+//			for (int j = 0; j <= n; j++) {
+//				System.out.print(dp[i][j] ? 1 : 0);
+//			}
+//			System.out.println();
+//		}
     	return dp[m][n];
     }
     
@@ -48,6 +57,6 @@ public class WildcardMatching {
     	return ip==p.length();
     }
     public static void main(String[] args) {
-		System.out.println(new WildcardMatching().isMatch("abefcdgiescdfimde", "ab*cd?i*de"));
+		System.out.println(new WildcardMatching().isMatch("100-trade-done", "1*trade*done"));
 	}
 }
