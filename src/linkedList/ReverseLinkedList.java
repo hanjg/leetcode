@@ -1,16 +1,20 @@
 package linkedList;
 
+/**
+ * problems-206 https://leetcode-cn.com/problems/reverse-linked-list/
+ */
 public class ReverseLinkedList {
+
     public ListNode reverseList(ListNode head) {
-        if(head==null||head.next==null)return head;
-        ListNode p1=head,p2=head.next;
-        while(p2!=null){
-        	ListNode temp=p2.next;
-        	p2.next=p1;
-        	p1=p2;p2=temp;
+        ListNode cur = head;
+        ListNode pre = null;
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
         }
-        head.next=null;
-        return p1;
+        return pre;
     }
 
 }

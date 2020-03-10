@@ -15,7 +15,7 @@ public class WordBreakII {
     	}
     	for(String word:wordDict){
     		if(s.startsWith(word)){
-    			List<String>list =dfs(s.substring(word.length()), wordDict);//word+list=res
+    			List<String>list =dfs(s.substring(word.length()), wordDict);//word+list=result
     			for(String sub:list){
     				res.add(word+(sub==null?"":(" "+sub)));
     			}

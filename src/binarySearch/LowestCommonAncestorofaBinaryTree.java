@@ -1,10 +1,27 @@
 package binarySearch;
 
+/**
+ * problems-236 https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
+ */
 public class LowestCommonAncestorofaBinaryTree {
+
+    /**
+     * 后续遍历寻找p,q
+     */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root==null||root==p||root==q)return root;//寻找到p,q或者null
-        TreeNode left=lowestCommonAncestor(root.left, p, q);
-        TreeNode right=lowestCommonAncestor(root.right, p, q);
-        return left==null?right:right==null?left:root;
+        if (root == p || root == q || root == null) {
+            return root;
+        }
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left != null && right != null) {
+            return root;
+        } else if (left != null) {
+            return left;
+        } else if (right != null) {
+            return right;
+        } else {
+            return null;
+        }
     }
 }

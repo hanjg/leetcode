@@ -1,65 +1,80 @@
 package design;
 
-class TrieNode {
-    // Initialize your data structure here.
-    char val;
-    boolean isWord;
-    TrieNode[] children=new TrieNode[26];
-    
-    public TrieNode(char val){
-    	this.val=val;
-    } 
-}
+/**
+ * problems-208 https://leetcode-cn.com/problems/implement-trie-prefix-tree/
+ */
 public class ImplementTrie {
-	private TrieNode root;
-	
-	public ImplementTrie(){
-		root=new TrieNode(' ');
-	}
-    // Adds a word into the data structure.
-    public void addWord(String word) {
-        TrieNode current=root;
-        for(int i=0;i<word.length();i++){
-        	char c=word.charAt(i);
-        	if (current.children[c-'a']==null) {
-				current.children[c-'a']=new TrieNode(c);
-			}
-        	current=current.children[c-'a'];
-        }
-        current.isWord=true;
+
+    private TrieNode root;
+
+    public ImplementTrie() {
+        root = new TrieNode(' ');
     }
 
-    // Returns if the word is in the data structure. A word could
-    // contain the dot character '.' to represent any one letter.
-    public boolean search(String word) {
-        return searchNode(word, root);
+    public void insert(String word) {
+        TrieNode parentNode = root;
+        for (char c : word.toCharArray()) {
+            TrieNode curNode = parentNode.getChild(c);
+            if (curNode == null) {
+                curNode = new TrieNode(c);
+            }
+            parentNode.addChild(c, curNode);
+            parentNode = curNode;
+        }
+        parentNode.setEnd();
     }
-    
-    private boolean searchNode(String word,TrieNode node){//从node开始搜索
-    	TrieNode current=node;
-    	for(int i=0;i<word.length();i++){
-    		char c=word.charAt(i);
-    		if (c=='.') {
-				boolean result=false;
-				for(int j=0;j<26&&result==false;j++){
-					if (current.children[j]!=null) {
-						result=searchNode(word.substring(i+1), current.children[j]);
-					}
-				}
-				return result;
-			}
-    		else if (current.children[c-'a']==null) {
-				return false;
-			}
-    		else {
-				current=current.children[c-'a'];
-			}
-    	}
-    	return current.isWord;
+
+    public boolean search(String word) {
+        TrieNode node = searchPrefix(word, root);
+        return node != null && node.isEnd();
+    }
+
+    public boolean startsWith(String prefix) {
+        TrieNode node = searchPrefix(prefix, root);
+        return node != null;
+    }
+
+    private TrieNode searchPrefix(String prefix, TrieNode parentNode) {
+        TrieNode curNode = null;
+        for (char c : prefix.toCharArray()) {
+            curNode = parentNode.getChild(c);
+            if (curNode == null) {
+                return curNode;
+            }
+            parentNode = curNode;
+        }
+        return curNode;
+    }
+
+    class TrieNode {
+
+        private char val;
+        private boolean isEnd;
+        private TrieNode[] children;
+
+        public TrieNode(char val) {
+            this.val = val;
+            this.children = new TrieNode[26];
+        }
+
+        public void addChild(char c, TrieNode child) {
+            this.children[c - 'a'] = child;
+        }
+
+        public TrieNode getChild(char c) {
+            return this.children[c - 'a'];
+        }
+
+        public void setEnd() {
+            this.isEnd = true;
+        }
+
+        public void unSetEnd() {
+            this.isEnd = false;
+        }
+
+        public boolean isEnd() {
+            return this.isEnd;
+        }
     }
 }
-
-// Your WordDictionary object will be instantiated and called as such:
-// WordDictionary wordDictionary = new WordDictionary();
-// wordDictionary.addWord("word");
-// wordDictionary.search("pattern");
