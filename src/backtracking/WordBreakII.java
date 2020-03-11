@@ -1,4 +1,4 @@
-package backTracking;
+package backtracking;
 import java.util.*;
 public class WordBreakII {
 	HashMap<String, List<String>> map;//string+string对应dict中的组合的列表

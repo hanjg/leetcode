@@ -1,4 +1,4 @@
-package backTracking;
+package backtracking;
 
 public class SudokuSolver2 {
 	int[] rows,cols,subs;//用int的后9个bit位记录每一行、列、子方格中出现过的数字1-9

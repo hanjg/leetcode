@@ -1,4 +1,4 @@
-package backTracking;
+package backtracking;
 
 public class WordSearch {
 	int m,n;

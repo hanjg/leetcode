@@ -1,4 +1,4 @@
-package backTracking;
+package backtracking;
 import java.util.*;
 public class CombinationSumII {
 	List<List<Integer>> res;

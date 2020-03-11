@@ -1,4 +1,4 @@
-package backTracking;
+package backtracking;
 
 public class AdditiveNumber {
 	int n;

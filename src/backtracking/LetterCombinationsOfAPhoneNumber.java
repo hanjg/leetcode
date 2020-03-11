@@ -1,4 +1,4 @@
-package backTracking;
+package backtracking;
 import java.util.*;
 public class LetterCombinationsOfAPhoneNumber {
 	String[] keys={" ","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
