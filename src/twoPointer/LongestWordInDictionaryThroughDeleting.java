@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * problems-524 https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/
+ * problems-524 https://leetcode-cn.com/problems/longest-word-in-dictionary-through-deleting/
  */
 public class LongestWordInDictionaryThroughDeleting {
 

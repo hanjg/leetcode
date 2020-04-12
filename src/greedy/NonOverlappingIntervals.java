@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * problems-435 https://leetcode.com/problems/non-overlapping-intervals/
+ * problems-435 https://leetcode-cn.com/problems/non-overlapping-intervals/
  */
 public class NonOverlappingIntervals {
 

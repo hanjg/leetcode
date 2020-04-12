@@ -1,6 +1,6 @@
 package twoPointer;
 
-public class TwoSumII_Inputarrayissorted {
+public class TwoSumIIInputarrayissorted {
     public int[] twoSum(int[] numbers, int target) {
         int i=0,j=numbers.length-1;
         while(i<j){

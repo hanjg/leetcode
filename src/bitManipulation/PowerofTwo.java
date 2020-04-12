@@ -1,14 +1,12 @@
 package bitManipulation;
 
+/**
+ * problems-231 https://leetcode-cn.com/problems/power-of-two/
+ */
 public class PowerofTwo {
+
     public boolean isPowerOfTwo(int n) {
-        if(n<=0) return false;
-        return Integer.bitCount(n)==1;
+        //n二进制最后一个1->0
+        return n > 0 && ((n & (n - 1)) == 0);
     }
-
-	
-	public boolean isPowerOfTwo2(int n) {
-		return n>0&&((n&(n-1))==0);
-	}
-
 }

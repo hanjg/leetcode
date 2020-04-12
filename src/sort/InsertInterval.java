@@ -1,5 +1,7 @@
 package sort;
 import java.util.*;
+import sort.MergeIntervals.Interval;
+
 public class InsertInterval {
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
     	List<Interval> res=new ArrayList<>();

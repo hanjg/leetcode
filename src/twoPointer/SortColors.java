@@ -1,7 +1,7 @@
 package twoPointer;
 
 /**
- * problems-75 https://leetcode.com/problems/sort-colors/
+ * problems-75 https://leetcode-cn.com/problems/sort-colors/
  */
 public class SortColors {
 

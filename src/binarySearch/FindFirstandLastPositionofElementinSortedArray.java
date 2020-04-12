@@ -15,35 +15,39 @@ public class FindFirstandLastPositionofElementinSortedArray {
         return res;
     }
 
+    /**
+     * 寻找左边界
+     */
     private int findFirst(int[] nums, int target) {
         int l = 0;
         int r = nums.length - 1;
         while (l < r) {
+            //中点偏左
             int m = l + (r - l) / 2;
-            if (nums[m] == target) {
-                //右端点等于中点，中点需偏左，否则死循环
-                r = m;
-            } else if (nums[m] > target) {
-                r = m - 1;
-            } else {
+            if (nums[m] < target) {
+                //左端点+1
                 l = m + 1;
+            } else {
+                r = m;
             }
         }
         return nums[l] == target ? l : -1;
     }
 
+    /**
+     * 寻找右边界
+     */
     private int findLast(int[] nums, int target) {
         int l = 0;
         int r = nums.length - 1;
         while (l < r) {
+            //中点偏右
             int m = l + (r - l + 1) / 2;
-            if (nums[m] == target) {
-                //左端点等于中点，中点需偏右，否则死循环
-                l = m;
-            } else if (nums[m] > target) {
+            if (nums[m] > target) {
+                //右端点-1
                 r = m - 1;
             } else {
-                l = m + 1;
+                l = m;
             }
         }
         return nums[r] == target ? r : -1;

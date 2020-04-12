@@ -1,38 +1,61 @@
 package twoPointer;
 
+/**
+ * problems-76 https://leetcode-cn.com/problems/minimum-window-substring/
+ */
 public class MinimumWindowSubstring {
+
     public String minWindow(String s, String t) {
-    	int minBegin=0,minEnd=0,minWidth=Integer.MAX_VALUE;//最小的窗口
-    	//count,need:还需要在s中查找的字符的总数量和各个字符的数量;have:t中是否含有该字符
-    	int count=t.length();
-    	int[] need=new int[128];
-    	boolean[] have=new boolean[128];
-    	for(char c:t.toCharArray()){
-    		need[c]++;have[c]=true;
-    	}
-    	int begin=0,end=-1;//s中当前窗口[begin,end]
-    	while(end+1<s.length()){
-    		while(count>0&&end+1<s.length()){
-    			end++;
-    			if (have[s.charAt(end)]&&need[s.charAt(end)]-->0) //need[c]<0表示窗口中c超过需要的数量
-    				count--;
-    		}
-    		while(count==0&&begin<=end){
-    			if (end-begin+1<minWidth) {
-					minBegin=begin;minEnd=end;minWidth=end-begin+1;
-				}
-    			begin++;
-    			if (have[s.charAt(begin-1)]&&++need[s.charAt(begin-1)]>0) 
-					count++;
-    		}
-    	}
-    	return minWidth==Integer.MAX_VALUE?"":s.substring(minBegin, minEnd+1);
+        String res = null;
+        //需要在s中找到的字符统计
+        int[] mark = new int[128];
+        for (char c : t.toCharArray()) {
+            mark[c]++;
+        }
+        //需要在s中找到的字符计数
+        int need = 0;
+        for (int count : mark) {
+            if (count > 0) {
+                need++;
+            }
+        }
+        int l = 0;
+        int r = 0;
+        while (r < s.length()) {
+            char cr = s.charAt(r);
+            r++;
+            mark[cr]--;
+            if (mark[cr] == 0) {
+                need--;
+            }
+            //求最短窗口，满足时缩小
+            while (need <= 0) {
+                res = generateResult(s, l, r, res);
+                char cl = s.charAt(l);
+                mark[cl]++;
+                l++;
+                if (mark[cl] == 1) {
+                    need++;
+                }
+            }
+        }
+        return res == null ? "" : res;
     }
 
-	public static void main(String[] args){
-		MinimumWindowSubstring sol=new MinimumWindowSubstring();
-		System.out.println(sol.minWindow("bba", "ab"));
-		
-	}
+    private String generateResult(String s, int l, int r, String res) {
+        if (res == null) {
+            return s.substring(l, r);
+        }
+        if (r - l < res.length()) {
+            return s.substring(l, r);
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        MinimumWindowSubstring sol = new MinimumWindowSubstring();
+        System.out.println(sol.minWindow("aa", "aa"));
+
+    }
 
 }

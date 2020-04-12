@@ -1,37 +1,54 @@
 package sort;
-import java.util.*;
-class Interval {
-	int start;
-	int end;
-	Interval() { 
-		start = 0; end = 0; 
-	}
-	Interval(int s, int e) { 
-		start = s; end = e; 
-	}
-}
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+/**
+ * problems-56 https://leetcode-cn.com/problems/merge-intervals/
+ */
 public class MergeIntervals {
-    public List<Interval> merge(List<Interval> intervals) {
-    	List<Interval> res=new ArrayList<>();
-    	if(intervals.size()==0)return res;
-    	Collections.sort(intervals, new Comparator<Interval>() {
-    		public int compare(Interval i1,Interval i2){
-    			return i1.start-i2.start;
-    		}
-		});//intervals中的区间按照start从小到大排序
-    	int start=intervals.get(0).start,end=intervals.get(0).end;
-    	//待合并的区间[start,end],由于intervals的顺序，start<=新的区间的start
-    	for(Interval interval:intervals){
-    		if (interval.start<=end) {//可以合并
-    			end=Math.max(end, interval.end);
-			}
-    		else {//不可合并
-				res.add(new Interval(start, end));
-				start=interval.start;end=interval.end;
-			}
-    	}
-    	res.add(new Interval(start, end));
-    	return res;
+
+    public int[][] merge(int[][] intervals) {
+        if (intervals.length == 0) {
+            return new int[0][0];
+        }
+        List<int[]> res = new ArrayList<>();
+        //intervals中的区间按照start从小到大排序
+        intervals = Arrays.stream(intervals).sorted(Comparator.comparingInt(o -> o[0])).collect(Collectors.toList())
+                .toArray(new int[0][0]);
+        int start = intervals[0][0];
+        int end = intervals[0][1];
+        for (int i = 1; i < intervals.length; i++) {
+            int[] interval = intervals[i];
+            //由于已经排序，interval.start>=start
+            if (interval[0] <= end) {
+                //可以合并，interval.start<=end
+                end = Math.max(end, interval[1]);
+            } else {
+                //不可合并
+                res.add(new int[]{start, end});
+                start = interval[0];
+                end = interval[1];
+            }
+        }
+        res.add(new int[]{start, end});
+        return res.toArray(new int[0][0]);
+    }
+    class Interval {
+        int start;
+        int end;
+        Interval() {
+            start = 0; end = 0;
+        }
+        Interval(int s, int e) {
+            start = s; end = e;
+        }
+    }
+    public static void main(String[] args) {
+        new MergeIntervals().merge(new int[][]{{1,3},{2,6},{8,10},{15,18}});
     }
 }
+

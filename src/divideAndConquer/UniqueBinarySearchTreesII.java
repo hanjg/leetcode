@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * problems-95 https://leetcode.com/problems/unique-binary-search-trees-ii/
+ * problems-95 https://leetcode-cn.com/problems/unique-binary-search-trees-ii/
  */
 class TreeNode {
 
