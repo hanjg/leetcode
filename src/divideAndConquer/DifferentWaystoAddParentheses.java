@@ -3,7 +3,7 @@ package divideAndConquer;
 import java.util.*;
 
 /**
- * problems-241 https://leetcode-cn.com/problems/different-ways-to-add-parentheses/description/
+ * problems-241 https://leetcode-cn.com/problems/different-ways-to-add-parentheses/
  */
 public class DifferentWaystoAddParentheses {
 

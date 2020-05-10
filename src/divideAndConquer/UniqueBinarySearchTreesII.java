@@ -8,17 +8,6 @@ import java.util.Map;
 /**
  * problems-95 https://leetcode-cn.com/problems/unique-binary-search-trees-ii/
  */
-class TreeNode {
-
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
-
 public class UniqueBinarySearchTreesII {
 
     private Map<Integer, List<TreeNode>> nodeCache = new HashMap<>();
@@ -90,4 +79,15 @@ public class UniqueBinarySearchTreesII {
         System.out.println(new UniqueBinarySearchTreesII().generateTrees(3));
     }
 
+    class TreeNode {
+
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+    }
 }
+

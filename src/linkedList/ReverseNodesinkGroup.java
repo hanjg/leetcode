@@ -1,31 +1,52 @@
 package linkedList;
 
+/**
+ * problems-25 https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
+ */
 public class ReverseNodesinkGroup {
+
     public ListNode reverseKGroup(ListNode head, int k) {
-    	if(head==null||head.next==null||k==1)return head;
-    	ListNode dum=new ListNode(0);dum.next=head;
-    	ListNode tail=dum;
-    	while(tail.next!=null){
-    		ListNode end=tail.next;int count=1;//count表示tail之后到end总共有count个结点
-    		while(end!=null&&count<k){
-    			end=end.next;count++;
-    		}
-    		if(end!=null){
-    			ListNode temp=tail.next;
-    			reverse(tail, end);
-    			tail=temp;
-    		}
-    		else break;
-    	}
-    	return dum.next;
+        if (head == null || head.next == null || k == 1) {
+            return head;
+        }
+        ListNode virtualNode = new ListNode(0);
+        virtualNode.next = head;
+        //需要翻转的链表段之前的尾节点
+        ListNode preTail = virtualNode;
+        while (preTail.next != null) {
+            ListNode end = preTail.next;
+            //寻找目标段尾节点
+            for (int i = 1; end != null && i < k; i++) {
+                end = end.next;
+            }
+            if (end == null) {
+                //剩余节点<k个，不翻转
+                break;
+            }
+            ListNode tail = preTail.next;
+            reverse(preTail, end);
+            preTail = tail;
+        }
+        return virtualNode.next;
     }
-    
-    private void reverse(ListNode pre,ListNode end){
-    	ListNode p1=pre.next,p2=p1.next;
-    	while(p1!=end){
-    		ListNode temp=p2.next;
-    		p2.next=p1;p1=p2;p2=temp;
-    	}
-    	pre.next.next=p2;pre.next=p1;//pre.next.next=p2不是end.next
+
+    /**
+     * @param tail 目标段的前一段尾节点
+     * @param end 目标段尾节点
+     */
+    private void reverse(ListNode tail, ListNode end) {
+        ListNode cur = tail.next;
+        ListNode pre = tail;
+        ListNode next = null;
+        while (pre != end) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        //cur为目标段后一段头结点
+        tail.next.next = cur;
+        //pre为目标段新的头结点
+        tail.next = pre;
     }
 }

@@ -10,12 +10,13 @@ public class LongestConsecutiveSequence {
 
     public int longestConsecutive(int[] nums) {
         int maxLenght = 0;
+        //记录序列中的所有数
         Set<Integer> set = new HashSet<>(nums.length);
         for (int num : nums) {
             set.add(num);
         }
-        //从连续序列第一个开始计算长度：num-1不在集合中
         for (int num : nums) {
+            //从最长连续序列的第一个开始遍历
             if (set.contains(num - 1)) {
                 continue;
             }

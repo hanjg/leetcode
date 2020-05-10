@@ -1,4 +1,4 @@
-package design;
+package trieTree;
 
 /**
  * problems-208 https://leetcode-cn.com/problems/implement-trie-prefix-tree/

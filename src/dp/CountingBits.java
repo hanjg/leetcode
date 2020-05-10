@@ -1,5 +1,8 @@
 package dp;
 
+/**
+ * problems-338 https://leetcode-cn.com/problems/counting-bits/
+ */
 public class CountingBits {
 
     public int[] countBits(int num) {

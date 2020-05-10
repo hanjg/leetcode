@@ -1,24 +1,25 @@
 package bitManipulation;
 
+/**
+ * problems-260 https://leetcode-cn.com/problems/single-number-iii/
+ */
 public class SingleNumberIII {
+
     public int[] singleNumber(int[] nums) {
-        int xor=0;//两个只出现一次的数的异或值
-        for(int i=0;i<nums.length;i++){
-        	xor^=nums[i];
+        //两个只出现一次的数的异或值 xor = x^y
+        int xor = 0;
+        for (int num1 : nums) {
+            xor ^= num1;
         }
-        int dif=xor&(-xor);
-        //dif为xor中取最右端的1代表的数，表示这两个数在这一位上分别为1和0，可以此将原数组分为两组,使得这两个数在不同的组
-        //如xor=01110 -xor(按位取反后+1)=10010 则dif=00010
-        int nums1=0,nums2=0;
-        for(int i=0;i<nums.length;i++){
-        	if ((nums[i]&dif)>0) {
-				nums1^=nums[i];
-			}
-        	else {
-				nums2^=nums[i];
-			}
+        //保留最低位的1，其余全部置0，这个1只能来自其中的一个，如x
+        int dif = xor & (-xor);
+        int y = xor;
+        for (int num : nums) {
+            if ((num & dif) > 0) {
+                //只和x异或不和y异或
+                y ^= num;
+            }
         }
-        int [] result={nums1,nums2};
-        return result;
+        return new int[]{xor ^ y, y};
     }
 }
