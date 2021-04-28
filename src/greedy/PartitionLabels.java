@@ -27,6 +27,7 @@ public class PartitionLabels {
             for (int i = start; i <= end; i++) {
                 char c = S.charAt(i);
                 if (lastIndex[c - 'a'] > end) {
+                    //同一个字母第一个字符和最后一个字符必须在同一个区间
                     end = lastIndex[c - 'a'];
                 }
             }

@@ -39,7 +39,7 @@ public class ImplementTrie {
         for (char c : prefix.toCharArray()) {
             curNode = parentNode.getChild(c);
             if (curNode == null) {
-                return curNode;
+                return null;
             }
             parentNode = curNode;
         }

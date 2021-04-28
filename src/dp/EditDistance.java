@@ -24,7 +24,7 @@ public class EditDistance {
                     //最后一个字符相等，不操作
                     dp[i][j] = dp[i - 1][j - 1];
                 } else {
-                    //增、删、改
+                    //对B增、删、改 等价于 对B增、对A增、对A改
                     dp[i][j] = Math.min(dp[i][j - 1] + 1, Math.min(dp[i - 1][j] + 1, dp[i - 1][j - 1] + 1));
                 }
             }

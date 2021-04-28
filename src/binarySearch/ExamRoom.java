@@ -22,25 +22,21 @@ public class ExamRoom {
     public int seat() {
         int toSeat = 0;
         if (!students.isEmpty()) {
-            Integer dist = Integer.MIN_VALUE;
-            //判断[0]位置是否合适
-            int first = students.first();
-            if (first > dist) {
-                toSeat = 0;
-                dist = first;
-            }
+            //从最左边的座位0上开始考虑
+            int dist = students.first();
+
             //两两学生之间是否可以插入
             Integer pre = null;
-            for (Integer s : students) {
+            for (Integer stu : students) {
                 if (pre != null) {
-                    int d = (s - pre) / 2;
+                    int d = (stu - pre) / 2;
                     if (d > dist) {
-                        //更新位置和最短距离
+                        //更新位置和最大距离
                         dist = d;
                         toSeat = pre + d;
                     }
                 }
-                pre = s;
+                pre = stu;
             }
             //判断[n-1]位置是否合适
             if (n - 1 - students.last() > dist) {

@@ -20,8 +20,8 @@ public class BestTimetoBuyandSellStockIV {
             }
             return max;
         }
-        //dp[i][j][0]：i天k次交易空仓
-        //dp[i][j][1]：i天k次交易满仓
+        //dp[i][j][0]：i天j次交易空仓
+        //dp[i][j][1]：i天j次交易满仓
         int[][][] dp = new int[n][k + 1][2];
         for (int j = 0; j <= k; j++) {
             dp[0][j][1] = -prices[0];

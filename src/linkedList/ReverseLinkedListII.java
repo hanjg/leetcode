@@ -30,8 +30,8 @@ public class ReverseLinkedListII {
      * @param end 目标段尾节点
      */
     private void reverse(ListNode preTail, ListNode end) {
-        ListNode cur = preTail.next;
         ListNode pre = preTail;
+        ListNode cur = preTail.next;
         ListNode next = null;
         while (pre != end) {
             next = cur.next;
@@ -39,10 +39,10 @@ public class ReverseLinkedListII {
             pre = cur;
             cur = next;
         }
-        //cur为目标段后一段头结点
+        //cur为后一段头结点
         preTail.next.next = cur;
-        //pre为目标段新的头结点
-        preTail.next = pre;
+        //pre为目标段头结点
+        preTail.next = end;
     }
 
     public static void main(String[] args) {

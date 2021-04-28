@@ -14,18 +14,18 @@ public class ReverseNodesinkGroup {
         //需要翻转的链表段之前的尾节点
         ListNode preTail = virtualNode;
         while (preTail.next != null) {
-            ListNode end = preTail.next;
+            ListNode nextTail = preTail.next;
+            ListNode end = preTail;
             //寻找目标段尾节点
-            for (int i = 1; end != null && i < k; i++) {
+            for (int i = 0; end != null && i < k; i++) {
                 end = end.next;
             }
             if (end == null) {
-                //剩余节点<k个，不翻转
+                //剩余节点[pretail.next, end] 总数<k个，不翻转
                 break;
             }
-            ListNode tail = preTail.next;
             reverse(preTail, end);
-            preTail = tail;
+            preTail = nextTail;
         }
         return virtualNode.next;
     }
@@ -47,6 +47,19 @@ public class ReverseNodesinkGroup {
         //cur为目标段后一段头结点
         tail.next.next = cur;
         //pre为目标段新的头结点
-        tail.next = pre;
+        tail.next = end;
+    }
+
+    public static void main(String[] args) {
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        node1.next = node2;
+        ListNode node3 = new ListNode(3);
+        node2.next = node3;
+        ListNode node4 = new ListNode(4);
+        node3.next = node4;
+        ListNode node5 = new ListNode(5);
+        node4.next = node5;
+        new ReverseNodesinkGroup().reverseKGroup(node1, 2);
     }
 }

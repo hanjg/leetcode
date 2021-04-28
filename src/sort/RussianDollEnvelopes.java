@@ -19,7 +19,7 @@ public class RussianDollEnvelopes {
             }
             return o2[1] - o1[1];
         });
-        //求宽度的最长递增子序列，保证不同宽度可以嵌套，同宽度只会取到最小高度嵌套
+        //求高度的最长递增子序列：保证不同宽度可以嵌套、同宽度只会取到最小高度的信封
         int[] nums = Arrays.stream(envelopes).map(env -> env[1]).mapToInt(Integer::valueOf).toArray();
         return lengthOfLIS(nums);
     }

@@ -11,17 +11,17 @@ public class KthLargestElementinanArray {
 
     private int quickSelect(int[] nums, int low, int high, int kth) {
         //分割点下标
-        int pivot = partion(nums, low, high);
-        if (pivot == kth - 1) {
-            return nums[pivot];
-        } else if (pivot > kth - 1) {
-            return quickSelect(nums, low, pivot - 1, kth);
+        int pivotIndex = pivot(nums, low, high);
+        if (pivotIndex == kth - 1) {
+            return nums[pivotIndex];
+        } else if (pivotIndex > kth - 1) {
+            return quickSelect(nums, low, pivotIndex - 1, kth);
         } else {
-            return quickSelect(nums, pivot + 1, high, kth);
+            return quickSelect(nums, pivotIndex + 1, high, kth);
         }
     }
 
-    private int partion(int[] nums, int begin, int end) {
+    private int pivot(int[] nums, int begin, int end) {
         int pivot = nums[end];
         int i = begin - 1;
         int j = end;
