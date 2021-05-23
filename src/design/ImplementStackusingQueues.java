@@ -1,13 +1,20 @@
 package design;
+
 import java.util.*;
 
+/**
+ * problems-225 https://leetcode-cn.com/problems/implement-stack-using-queues/
+ */
 public class ImplementStackusingQueues {
-	Queue<Integer> queue=new LinkedList<>();
+
+    Queue<Integer> queue = new LinkedList<>();
+
     // Push element x onto stack.
     public void push(int x) {
         queue.add(x);
-        for(int i=0;i<queue.size()-1;i++){
-        	queue.add(queue.poll());
+        //最后加入的到队首，需要poll size-1次
+        for (int i = 0; i < queue.size() - 1; i++) {
+            queue.add(queue.poll());
         }
     }
 

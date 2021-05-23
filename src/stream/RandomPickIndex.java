@@ -1,4 +1,4 @@
-package reservoirSamling;
+package stream;
 
 import java.util.Random;
 
@@ -9,7 +9,7 @@ public class RandomPickIndex {
         this.nums=nums;
         random=new Random();
     }
-    
+
     public int pick(int target) {
     	int res=-1,count=0;
     	for(int i=0;i<nums.length;i++){

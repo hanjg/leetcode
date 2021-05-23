@@ -11,6 +11,7 @@
 - [贪心](./summary/贪心.md)
 - [位操作](./summary/位操作.md)
 - [数学](./summary/数学.md)
+- [流处理](./summary/流处理.md)
 
 ### 数据结构 ###
 - [数组](./summary/数组.md)
