@@ -1,27 +1,47 @@
 package graph;
+
 import java.util.*;
+
+/**
+ * problems-332 https://leetcode-cn.com/problems/reconstruct-itinerary/
+ */
 public class ReconstructItinerary {
-	Map<String, PriorityQueue<String>> graph;
-	List<String> result;
-    public List<String> findItinerary(String[][] tickets) {
-        graph=new HashMap<>();
-        result=new LinkedList<>();
-        for(String[] pair:tickets){
-        	if(!graph.containsKey(pair[0])) graph.put(pair[0], new PriorityQueue<String>());
-        	graph.get(pair[0]).add(pair[1]);
-        }
+
+    private Map<String, PriorityQueue<String>> graph;
+    private List<String> result;
+
+    public List<String> findItinerary(List<List<String>> tickets) {
+        graph = initGraph(tickets);
+        result = new ArrayList<>(tickets.size());
         dfs("JFK");
+        Collections.reverse(result);
         return result;
     }
-    
-    private void dfs(String from){
-    	PriorityQueue<String> tos=graph.get(from);
-    	while(!tos.isEmpty()){
-    		dfs(tos.poll());
-    	}
-    	result.add(0,from);
+
+    /**
+     * from->下一个节点列表，字典排序
+     */
+    private Map<String, PriorityQueue<String>> initGraph(List<List<String>> tickets) {
+        Map<String, PriorityQueue<String>> graph = new HashMap<>(tickets.size());
+        for (List<String> edge : tickets) {
+            String from = edge.get(0);
+            String to = edge.get(1);
+            if (graph.get(from) == null) {
+                graph.put(from, new PriorityQueue<>());
+            }
+            graph.get(from).add(to);
+        }
+        return graph;
     }
-    public static void main(String[] args) {
-		System.out.println(new ReconstructItinerary().findItinerary(new String[][]{{"JFK","SFO"},{"JFK","ATL"},{"SFO","ATL"},{"ATL","JFK"},{"ATL","SFO"}}));
-	}
+
+    /**
+     * 对有出边的节点递归dfs
+     */
+    private void dfs(String from) {
+        while (graph.containsKey(from) && !graph.get(from).isEmpty()) {
+            dfs(graph.get(from).poll());
+        }
+        result.add(from);
+    }
+
 }
