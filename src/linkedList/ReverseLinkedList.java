@@ -10,8 +10,11 @@ public class ReverseLinkedList {
         ListNode cur = head;
         ListNode next = null;
         while (cur != null) {
+            //找到下一轮的节点
             next = cur.next;
+            //翻转
             cur.next = pre;
+            //进入下一轮
             pre = cur;
             cur = next;
         }
