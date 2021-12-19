@@ -10,11 +10,11 @@ public class LongestIncreasingSubsequence {
         if (n == 0) {
             return 0;
         }
-        //dp[i]:长度为i的LIS，最小的结尾数字
+        //dp[i]:长度为i的LIS末尾元素最小值
         int[] dp = new int[n + 1];
         //当前最长序列长度
         int max = 1;
-        dp[1] = nums[0];
+        dp[max] = nums[0];
         //len:父串长度
         for (int len = 2; len <= n; len++) {
             int index = findLeft(dp, 1, max, nums[len - 1]);
@@ -22,7 +22,7 @@ public class LongestIncreasingSubsequence {
                 //无左边界,dp[1,len]<num[len-1]，最长递增子序列长度+1
                 dp[++max] = nums[len - 1];
             } else {
-                //有左边界，即dp[1,len]有值>=nums[len-1]，替换该左边界值，最长递增子序列长度不变
+                //有左边界，即dp[index]>=nums[len-1]，替换该左边界值，最长递增子序列长度不变
                 dp[index] = nums[len - 1];
             }
         }
