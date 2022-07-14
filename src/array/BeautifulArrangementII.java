@@ -9,7 +9,7 @@ public class BeautifulArrangementII {
         //两种极端情况
         //1：完全有序[1,2,3,..,n]，差有1个不同整数
         //2: 完全无序[1,n,2,n-1...]，差有n-1个不同整数
-        //[1,k+1,2,k...k/2,k/2+1]，前k+1个无序构造k个差值
+        //[1,k+1,2,k...k/2,k/2+1]，前k+1个无序构造k个差值，[k+1,n)有序递增
         int[] res = new int[n];
         res[0] = 1;
         for (int i = 1, gap = k; i <= k; i++, gap--) {

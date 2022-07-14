@@ -13,7 +13,7 @@ public class SlidingWindowMaximum {
         if (n == 0) {
             return new int[0];
         }
-        //单调递减队列，存储nums中元素的下标
+        //单调非递增队列，存储nums中元素的下标
         Deque<Integer> deque = new ArrayDeque<>(k);
         //滑动窗口总共n-k+1个位置
         int[] result = new int[n - k + 1];

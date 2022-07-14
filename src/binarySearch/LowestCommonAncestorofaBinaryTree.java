@@ -12,9 +12,9 @@ public class LowestCommonAncestorofaBinaryTree {
         if (root == p || root == q || root == null) {
             return root;
         }
-        //pq在左子节点先祖
+        //pq在左子节点的公共先祖
         TreeNode left = lowestCommonAncestor(root.left, p, q);
-        //pq在右子节点先祖
+        //pq在右子节点的公共先祖
         TreeNode right = lowestCommonAncestor(root.right, p, q);
         if (left != null && right != null) {
             return root;

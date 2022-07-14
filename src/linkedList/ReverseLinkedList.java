@@ -10,15 +10,15 @@ public class ReverseLinkedList {
         ListNode cur = head;
         ListNode next = null;
         while (cur != null) {
-            //找到下一轮的节点
+            //预占下一轮节点
             next = cur.next;
-            //翻转
+            //实现翻转
             cur.next = pre;
-            //进入下一轮
+
             pre = cur;
             cur = next;
         }
-        //pre为新链表头
+        //新链表头
         return pre;
     }
 

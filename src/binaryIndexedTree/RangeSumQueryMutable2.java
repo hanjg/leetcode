@@ -37,11 +37,11 @@ public class RangeSumQueryMutable2 {
         int l = i + n;
         int r = j + n;
         while (l <= r) {
-            //l为右节点(内侧) 2i+1
+            //左边界l为右节点(内侧) 2i+1，累加之后右移一位
             if (l % 2 == 1) {
                 sum += tree[l++];
             }
-            //r为左节点(内侧) 2i
+            //右边界r为左节点(内侧) 2i，累加之后左移一位
             if (r % 2 == 0) {
                 sum += tree[r--];
             }

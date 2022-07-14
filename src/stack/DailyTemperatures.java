@@ -7,15 +7,18 @@ import java.util.Stack;
  */
 public class DailyTemperatures {
 
+    /**
+     * 单调非递增栈存遍历元素的下界||寻找下一个较大元素
+     */
     public int[] dailyTemperatures(int[] T) {
-        //单调递减栈存遍历元素的下界||寻找下一个较大元素
-        int[] res = new int[T.length];
+        int n = T.length;
+        int[] res = new int[n];
+        //下标
         Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < T.length; i++) {
-            while (!stack.isEmpty() && T[i] > T[stack.peek()]) {
-                //找到下一个较大元素
-                int top = stack.pop();
-                res[top] = i - top;
+        for (int i = 0; i < n; i++) {
+            while (!stack.isEmpty() && T[stack.peek()] < T[i]) {
+                int topIndex = stack.pop();
+                res[topIndex] = i - topIndex;
             }
             stack.push(i);
         }

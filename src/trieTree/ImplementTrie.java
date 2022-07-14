@@ -17,8 +17,8 @@ public class ImplementTrie {
             TrieNode curNode = parentNode.getChild(c);
             if (curNode == null) {
                 curNode = new TrieNode(c);
+                parentNode.addChild(c, curNode);
             }
-            parentNode.addChild(c, curNode);
             parentNode = curNode;
         }
         parentNode.setEnd();

@@ -22,9 +22,9 @@ public class ConvertSortedListtoBinarySearchTree {
         if (begin > end) {
             return null;
         }
-        int mid = (begin + end) / 2;
+        int mid = begin + (end - begin) / 2;
         TreeNode left = dfs(begin, mid - 1);
-        //中序遍历的次序为链表的次序
+        //中序遍历的顺序同链表顺序
         TreeNode root = new TreeNode(cur.val);
         cur = cur.next;
         TreeNode right = dfs(mid + 1, end);

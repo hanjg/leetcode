@@ -14,23 +14,23 @@ public class TrappingRainWater {
         int sum = 0;
         int left = 0;
         int right = height.length - 1;
-        //[0,left)最大值
-        //(right,length-1]的最大值
-        int leftmax = height[left];
-        int rightmax = height[right];
-        while (left <= right) {
+        int leftBar = height[left];
+        int rightBar = height[right];
+        while (left < right) {
             //接水的高度由短板决定
-            leftmax = Math.max(leftmax, height[left]);
-            rightmax = Math.max(rightmax, height[right]);
-            if (leftmax < rightmax) {
-                sum += Math.max(0, leftmax - height[left]);
-                left++;
+            if (leftBar < rightBar) {
+                sum += Math.max(0, leftBar - height[left + 1]);
+                leftBar = Math.max(leftBar, height[++left]);
             } else {
-                sum += Math.max(0, rightmax - height[right]);
-                right--;
+                sum += Math.max(0, rightBar - height[right - 1]);
+                rightBar = Math.max(rightBar, height[--right]);
             }
         }
         return sum;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new TrappingRainWater().trap(new int[]{4, 2, 0, 3, 2, 5}));
     }
 
 }

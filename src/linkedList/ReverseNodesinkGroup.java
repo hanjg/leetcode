@@ -47,7 +47,7 @@ public class ReverseNodesinkGroup {
         //cur为目标段后一段头结点
         tail.next.next = cur;
         //pre为目标段新的头结点
-        tail.next = end;
+        tail.next = pre;
     }
 
     public static void main(String[] args) {

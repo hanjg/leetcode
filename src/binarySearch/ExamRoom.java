@@ -22,8 +22,8 @@ public class ExamRoom {
     public int seat() {
         int toSeat = 0;
         if (!students.isEmpty()) {
-            //从最左边的座位0上开始考虑
-            int dist = students.first();
+            //新考生选座位，从最左边的0号座位开始考虑
+            int dist = students.first() - toSeat;
 
             //两两学生之间是否可以插入
             Integer pre = null;
@@ -38,7 +38,7 @@ public class ExamRoom {
                 }
                 pre = stu;
             }
-            //判断[n-1]位置是否合适
+            //判断[n-1]号座位是否合适
             if (n - 1 - students.last() > dist) {
                 toSeat = n - 1;
             }

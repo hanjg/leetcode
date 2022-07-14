@@ -36,13 +36,13 @@ public class ReverseLinkedListII {
         while (pre != end) {
             next = cur.next;
             cur.next = pre;
+
             pre = cur;
             cur = next;
         }
-        //cur为后一段头结点
+
         preTail.next.next = cur;
-        //pre为目标段头结点
-        preTail.next = end;
+        preTail.next = pre;
     }
 
     public static void main(String[] args) {

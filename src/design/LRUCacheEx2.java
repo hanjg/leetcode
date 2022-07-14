@@ -12,7 +12,7 @@ public class LRUCacheEx2 {
     private Map<Integer, Node> map;
 
     /**
-     * 记录使用顺序，最近使用的节点在前
+     * 记录使用顺序，最近使用的节点在前。收尾均为虚拟节点
      */
     private Node head;
     private Node tail;

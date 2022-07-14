@@ -11,6 +11,9 @@ public class LFUCache {
 
     private Map<Integer, Node> keyMap;
 
+    /**
+     * 频率->节点列表
+     */
     private Map<Integer, LinkedList<Node>> freqMap;
     private int minFreq;
 

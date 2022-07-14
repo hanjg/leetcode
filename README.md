@@ -3,7 +3,6 @@
 ### 算法 ###
 - [双指针](./summary/双指针.md)
   - [二分法](./summary/二分法.md)
-- [动态规划](./summary/动态规划.md)
 - [分治](./summary/分治.md)
 - [搜索](./summary/搜索.md)
   - [回溯](./summary/回溯.md) 
@@ -12,6 +11,7 @@
 - [位操作](./summary/位操作.md)
 - [数学](./summary/数学.md)
 - [流处理](./summary/流处理.md)
+- [**动态规划**](./summary/动态规划.md)
 
 ### 数据结构 ###
 - [数组](./summary/数组.md)
