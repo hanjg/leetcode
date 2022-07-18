@@ -19,6 +19,7 @@ public class MergeIntervals {
         //intervals中的区间按照start从小到大排序
         intervals = Arrays.stream(intervals).sorted(Comparator.comparingInt(o -> o[0])).collect(Collectors.toList())
                 .toArray(new int[0][0]);
+        //待合并的区间开始和结束
         int start = intervals[0][0];
         int end = intervals[0][1];
         for (int i = 1; i < intervals.length; i++) {
