@@ -25,7 +25,9 @@ public class MaximumProductSubarray {
         }
         for (int i = 1; i < n; i++) {
             if (nums[i] >= 0) {
+                //正数最大：本身 或者 本身×前一位结尾的正数乘积最大值
                 dp[i][0] = Math.max(nums[i], dp[i - 1][0] * nums[i]);
+                //负数最小：本身×前一位结尾的负数最小值
                 dp[i][1] = dp[i - 1][1] * nums[i];
             } else {
                 dp[i][0] = dp[i - 1][1] * nums[i];

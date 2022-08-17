@@ -5,9 +5,9 @@ package dp;
  */
 public class CountNumberofTexts {
 
-    //数字代表3个字母，子串长度->组合方式
+    //数字代表3个字母，相同字母子串长度->组合方式
     private long[] count3;
-    //数字代表4个字母，子串长度->组合方式
+    //数字代表4个字母，相同字母子串长度->组合方式
     private long[] count4;
     private int mod = (int) (1e9 + 7);
 
