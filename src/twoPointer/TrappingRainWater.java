@@ -19,11 +19,15 @@ public class TrappingRainWater {
         while (left < right) {
             //接水的高度由短板决定
             if (leftBar < rightBar) {
-                sum += Math.max(0, leftBar - height[left + 1]);
-                leftBar = Math.max(leftBar, height[++left]);
+                int target = left + 1;
+                sum += Math.max(0, leftBar - height[target]);
+                leftBar = Math.max(leftBar, height[target]);
+                left++;
             } else {
-                sum += Math.max(0, rightBar - height[right - 1]);
-                rightBar = Math.max(rightBar, height[--right]);
+                int target = right - 1;
+                sum += Math.max(0, rightBar - height[target]);
+                rightBar = Math.max(rightBar, height[target]);
+                right--;
             }
         }
         return sum;

@@ -20,7 +20,7 @@ public class LongestWordInDictionaryThroughDeleting {
                 i++;
             }
             if (j == candidate.length()) {
-                //符合条件，比较长度和字典序
+                //符合条件(candidate是s的子序列)，比较长度和字典序
                 if (candidate.length() > res.length() || (candidate.length() == res.length()
                         && candidate.compareTo(res) < 0)) {
                     res = candidate;
