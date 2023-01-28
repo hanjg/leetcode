@@ -14,13 +14,14 @@ public class BurstBalloons {
         for (int i = 0; i < n; i++) {
             money[i + 1] = nums[i];
         }
-        //dp[i][j]，戳破(i,j)之间所有气球可获得的最大值，目标dp[0][m-1]
+        //dp[i][j]，戳破money(i,j)之间所有气球可获得的最大值，目标dp[0][m-1]
         int[][] dp = new int[m][m];
         //offset=j-i
         for (int offset = 2; offset < m; offset++) {
             for (int i = 0, j = i + offset; j < m; i++, j++) {
-                //最后一个戳破的气球可能是(i,j)中的任意一个
+                //最后一个戳破的气球可能是(i,j)中的任意一个。
                 for (int last = i + 1; last < j; last++) {
+                    //分治思想
                     dp[i][j] = Math.max(dp[i][j], dp[i][last] + dp[last][j] + money[last] * money[i] * money[j]);
                 }
             }
