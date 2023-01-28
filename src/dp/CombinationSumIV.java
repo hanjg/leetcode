@@ -1,7 +1,5 @@
 package dp;
 
-import java.util.Arrays;
-
 /**
  * https://leetcode.cn/problems/combination-sum-iv/
  */
