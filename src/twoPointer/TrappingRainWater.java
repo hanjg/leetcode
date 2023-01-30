@@ -14,19 +14,19 @@ public class TrappingRainWater {
         int sum = 0;
         int left = 0;
         int right = height.length - 1;
-        int leftBar = height[left];
-        int rightBar = height[right];
+        int effectiveLeft = height[left]; //左边的有效高度
+        int effectiveRight = height[right]; //右边的有效高度
         while (left < right) {
             //接水的高度由短板决定
-            if (leftBar < rightBar) {
+            if (effectiveLeft < effectiveRight) {
                 int target = left + 1;
-                sum += Math.max(0, leftBar - height[target]);
-                leftBar = Math.max(leftBar, height[target]);
+                sum += Math.max(0, effectiveLeft - height[target]);
+                effectiveLeft = Math.max(effectiveLeft, height[target]);
                 left++;
             } else {
                 int target = right - 1;
-                sum += Math.max(0, rightBar - height[target]);
-                rightBar = Math.max(rightBar, height[target]);
+                sum += Math.max(0, effectiveRight - height[target]);
+                effectiveRight = Math.max(effectiveRight, height[target]);
                 right--;
             }
         }
