@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class MinimumSwapstoGroupAll1sTogetherII {
 
     /**
-     * 定长滑动窗口。转化为：从i开始宽度为k的窗口，0最少的个数，即最小交换次数
+     * 定长滑动窗口。最小交换次数转化为：求从i开始宽度为k的窗口，0个数最少，即区间和最大
      */
     public int minSwaps(int[] nums) {
         //总共k个1
