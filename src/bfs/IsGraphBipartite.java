@@ -31,6 +31,7 @@ public class IsGraphBipartite {
                             //相邻节点颜色如果相同，则不是二分图
                             return false;
                         } else if (color[next] == 0) {
+                            //未访问过
                             queue.add(next);
                         }
                     }
