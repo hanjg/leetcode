@@ -20,6 +20,7 @@ public class PartitionLabels {
                 lastIndex[S.charAt(i) - 'a'] = i;
             }
         }
+        //lastIndex：同一个字母最后一次出现的下标
         List<Integer> result = new ArrayList<>();
         int start = 0;
         int end = 0;
@@ -27,7 +28,7 @@ public class PartitionLabels {
             for (int i = start; i <= end; i++) {
                 char c = S.charAt(i);
                 if (lastIndex[c - 'a'] > end) {
-                    //同一个字母第一个字符和最后一个字符必须在同一个区间
+                    //同一个字母第一个字符和最后一个字符必须在同一个区间，将最后一个字母也加入区间
                     end = lastIndex[c - 'a'];
                 }
             }
