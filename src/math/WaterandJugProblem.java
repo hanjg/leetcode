@@ -6,7 +6,7 @@ package math;
 public class WaterandJugProblem {
 
     /**
-     * 判断是否存在整数m,n使得m*x+n*y==z，即判断z是否为x,y最大公约数的倍数
+     * 由裴蜀定理，判断是否存在整数m,n使得m*x+n*y==z，即判断z是否为x,y最大公约数的倍数
      */
     public boolean canMeasureWater(int x, int y, int z) {
         if (z > x + y) {
