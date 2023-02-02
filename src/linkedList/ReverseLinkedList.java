@@ -9,7 +9,7 @@ public class ReverseLinkedList {
         ListNode pre = null;
         ListNode cur = head;
         ListNode next = null;
-        while (cur != null) {
+        while (cur != null) {// 等价于pre停留在老列表末尾节点
             //预占下一轮节点
             next = cur.next;
             //实现翻转
