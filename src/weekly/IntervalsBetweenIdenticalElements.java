@@ -27,6 +27,7 @@ public class IntervalsBetweenIdenticalElements {
             //大于i的位置所有距离和
             long[] postSum = new long[positionList.size()];
             for (int i = 1; i < n; i++) {
+                //position[i]到所有position[0,i)的和，即在postion[i-1]到postion[0,i-1)的距离和基础上，增加i倍的position[i]和[i-1]的距离
                 preSum[i] = preSum[i - 1] + i * (positionList.get(i) - positionList.get(i - 1));
             }
             for (int i = n - 2; i >= 0; i--) {
