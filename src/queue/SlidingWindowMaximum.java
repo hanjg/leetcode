@@ -18,12 +18,12 @@ public class SlidingWindowMaximum {
         //滑动窗口总共n-k+1个位置
         int[] result = new int[n - k + 1];
         for (int i = 0; i < n; i++) {
-            //加入窗口
+            //加入窗口：加入时保证新加入的值是最小值
             while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
                 deque.pollLast();
             }
             deque.addLast(i);
-            //移出窗口
+            //移出窗口：保证窗口的宽度<=k
             if (deque.peekFirst() <= i - k) {
                 deque.pollFirst();
             }

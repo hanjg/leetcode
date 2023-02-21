@@ -37,9 +37,9 @@ public class TrappingRainWaterII {
                 int x = bar.x + dir[0];
                 int y = bar.y + dir[1];
                 if (x >= 0 && x < m && y >= 0 && y < n && !visited[x][y]) {
-                    //临接短板的接水量
+                    //邻接短板的接水量：源板高度和短板高度差，至少为0
                     res += Math.max(0, bar.height - heightMap[x][y]);
-                    //到达临接短板的高度较大值
+                    //邻接短板的有效高度：源板高度和邻接短板高度的较大值
                     queue.add(new Bar(x, y, Math.max(bar.height, heightMap[x][y])));
                     visited[x][y] = true;
                 }
@@ -55,7 +55,7 @@ public class TrappingRainWaterII {
         Bar(int x, int y, int height) {
             this.x = x;
             this.y = y;
-            this.height = height;
+            this.height = height;//能够提供的最大有效高度
         }
     }
 }

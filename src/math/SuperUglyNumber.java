@@ -8,7 +8,7 @@ public class SuperUglyNumber {
     public int nthSuperUglyNumber(int n, int[] primes) {
         int[] uglyNums = new int[n];
         uglyNums[0] = 1;
-        //pointers[i]:uglyNums[pointers[i]]乘primes[i]为下一个解
+        //pointers[i]:丑数下标，uglyNums[pointers[i]]乘primes[i]为下一个解
         int[] pointers = new int[primes.length];
         for (int i = 1; i < n; i++) {
             //求下一个解

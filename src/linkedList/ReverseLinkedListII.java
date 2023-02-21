@@ -41,6 +41,7 @@ public class ReverseLinkedListII {
             cur = next;
         }
 
+        //链表的首尾节点翻转
         preTail.next.next = cur;
         preTail.next = pre;
     }

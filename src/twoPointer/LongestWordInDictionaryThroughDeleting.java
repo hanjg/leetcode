@@ -15,9 +15,11 @@ public class LongestWordInDictionaryThroughDeleting {
             int j = 0;//candidate
             while (i < s.length() && j < candidate.length()) {
                 if (s.charAt(i) == candidate.charAt(j)) {
-                    j++;
+                    j++; //如果字符相等，子序列、父序列指针后移
+                    i++; 
+                } else {
+                    i++; //父序列指针后移
                 }
-                i++;
             }
             if (j == candidate.length()) {
                 //符合条件(candidate是s的子序列)，比较长度和字典序
