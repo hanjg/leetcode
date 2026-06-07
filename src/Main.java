@@ -18,19 +18,13 @@ public class Main {
             arr = line.split(" ");
             int cur = Integer.parseInt(arr[0]);
             int left = Integer.parseInt(arr[1]);
-            int right = Integer.parseInt(arr[1]);
-            Node curNode = null;
-            if (nodeMap.containsKey(cur)) {
-                curNode = nodeMap.get(cur);
-            } else {
-                curNode = new Node(cur);
-                nodeMap.put(cur, curNode);
-            }
+            int right = Integer.parseInt(arr[2]);
+            Node curNode = nodeMap.computeIfAbsent(cur, Node::new);
             if (left != 0) {
-                curNode.left = new Node(left);
+                curNode.left = nodeMap.computeIfAbsent(left, Node::new);
             }
             if (right != 0) {
-                curNode.right = new Node(right);
+                curNode.right = nodeMap.computeIfAbsent(right, Node::new);
             }
         }
 
