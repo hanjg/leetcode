@@ -1,8 +1,7 @@
 package binarySearch;
 
 /**
- * @author hanjigang
- * @date 2026/6/8 20:33
+ * problems-450 https://leetcode.cn/problems/delete-node-in-a-bst/description
  */
 public class DeleteNodeInABst {
 
