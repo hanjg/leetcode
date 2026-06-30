@@ -1,4 +1,4 @@
-package test._260609.coupang;
+package exam._260609.coupang;
 
 
 import java.util.ArrayList;
