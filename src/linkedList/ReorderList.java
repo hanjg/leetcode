@@ -1,44 +1,73 @@
 package linkedList;
 
 
+/**
+ * problems-2266 https://leetcode.cn/problems/reorder-list/description/
+ */
 public class ReorderList {
     public void reorderList(ListNode head) {
-    	if(head==null||head.next==null)return ;
-        ListNode slow=head,fast=head;
-        while(fast.next!=null&&fast.next.next!=null){
-        	slow=slow.next;
-        	fast=fast.next.next;
-        }//结束时以slow为尾节点的链表数量等于或多一个其后的节点数量
-        ListNode head2=slow.next;
-        slow.next=null;
-        head2=reverse(head2);
-        ListNode newhead=new ListNode(0);
-        ListNode cur=newhead;
-        while(head2!=null){
-        	cur=cur.next=head;head=head.next;
-        	cur=cur.next=head2;head2=head2.next;
+        // 快慢指针找到中点
+        ListNode mid = getMid(head);
+
+        // 截断链表
+        ListNode first = head;
+        ListNode second = mid.next;
+        mid.next = null;
+
+        // 反转后半段
+        second = reverse(second);
+        // merge链表
+        merge(first, second);
+    }
+
+    private void merge(ListNode first, ListNode second) {
+        while (first != null && second != null) {
+            ListNode firstNext = first.next;
+            ListNode secondNext = second.next;
+            first.next = second;
+            second.next = firstNext;
+
+            first = firstNext;
+            second = secondNext;
         }
-        if(head!=null)cur.next=head;
-        head=newhead.next;
     }
-    private ListNode reverse(ListNode head){
-    	if(head==null||head.next==null)return head;
-    	ListNode p1=head,p2=head.next;
-    	while(p2!=null){
-    		ListNode temp=p2.next;
-    		p2.next=p1;
-    		p1=p2;p2=temp;
-    	}
-    	head.next=null;
-    	return p1;
+
+    private ListNode getMid(ListNode node) {
+        ListNode fast = node;
+        ListNode slow = node;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
     }
-    public static void main(String[]args){
-    	int[]num={3,2,1};
-    	ListNode head=new ListNode(3);
-    	for(int i=1;i<3;i++){
-    		ListNode temp=new ListNode(num[i]);
-    		temp.next=head;head=temp;
-    	}
-    	new ReorderList().reorderList(head);
+
+    private ListNode reverse(ListNode node) {
+        ListNode cur = node;
+        ListNode pre = null;
+        ListNode next = null;
+        while (cur != null) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        // 新的首节点
+        return pre;
+    }
+
+    public static void main(String[] args) {
+        int[] num = {5, 4, 3, 2, 1};
+        ListNode head = new ListNode(5);
+        for (int i = 1; i < 5; i++) {
+            ListNode temp = new ListNode(num[i]);
+            temp.next = head;
+            head = temp;
+        }
+        new ReorderList().reorderList(head);
+        while (head != null) {
+            System.out.println(head.val);
+            head = head.next;
+        }
     }
 }
