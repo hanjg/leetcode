@@ -2,7 +2,7 @@ package linkedList;
 
 
 /**
- * problems-2266 https://leetcode.cn/problems/reorder-list/description/
+ * problems-143 https://leetcode.cn/problems/reorder-list/description/
  */
 public class ReorderList {
     public void reorderList(ListNode head) {
