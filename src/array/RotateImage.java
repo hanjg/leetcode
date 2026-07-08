@@ -11,7 +11,7 @@ public class RotateImage {
      */
     public void rotate(int[][] matrix) {
         int n = matrix.length;
-        // 关于x对称变换。
+        // 关于y对称变换。
         for (int i = 0; i < n / 2; i++) {
             for (int j = 0; j < n; j++) {
                 //i,j -> i,n-1-j
